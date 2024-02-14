@@ -1,7 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-
-import productsReducer from './reducers/productsSlice';
-
+import productsReducer, { fetchProductsAsync } from './reducers/productsSlice';
 import cartReducer from './reducers/cartSlice';
 
 export const store = configureStore({
@@ -10,3 +8,5 @@ export const store = configureStore({
     cart: cartReducer,
   },
 });
+
+store.dispatch(fetchProductsAsync());
