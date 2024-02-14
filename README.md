@@ -16,12 +16,12 @@ When creating this Streetwear Store, I used React for a modular front-end struct
 
 ## Live Site
 
-[Link to Live Site](https://your-live-site-url.com)
+[Link to Live Site](https://master--hypestreetwearr.netlify.app/)
 
 
 ```bash
 # How to run the project locally
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/trigzzz/trigzzz.github.io/tree/master
 cd your-repo
 npm install
 npm start
