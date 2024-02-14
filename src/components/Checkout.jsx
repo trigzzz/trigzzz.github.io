@@ -2,10 +2,21 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const Checkout = () => {
-  const cartItems = useSelector((state) => state.cart);
+  const cartItems = useSelector((state) => state.cart.items); 
 
-  const calculateTotal = () => {
+  if (!Array.isArray(cartItems)) {
+    
+    return <p>There was an issue loading your cart items.</p>;
+  }
+
+  const calculateTotalPrice = () => {
     return cartItems.reduce((total, item) => total + item.price, 0);
+  };
+
+  const handleCheckout = () => {
+    const totalPrice = calculateTotalPrice();
+    
+    alert(`Thanks For Shopping :) Total Price: $${totalPrice.toFixed(2)}`);
   };
 
   return (
@@ -22,8 +33,9 @@ const Checkout = () => {
               </li>
             ))}
           </ul>
-          <p>Total: ${calculateTotal()}</p>
-          <button onClick={() => alert('Thank you for your purchase!')}>Proceed to Checkout</button>
+          <p>Total Price: ${calculateTotalPrice().toFixed(2)}</p>
+          {/* Add a checkout form or more content */}
+          <button onClick={handleCheckout}>Checkout</button>
         </div>
       )}
     </div>

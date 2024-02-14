@@ -1,42 +1,35 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
 import ShoppingCart from './components/ShoppingCart';
-import Checkout from './components/Checkout'; 
+import Checkout from './components/Checkout';
+import { products } from './data/data.js'; 
 
 const App = () => {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/cart">Shopping Cart</Link>
-            </li>
-            <li>
-              <Link to="/checkout">Checkout</Link>
-            </li>
-          </ul>
-        </nav>
+        <Header />
 
         <Switch>
           <Route path="/cart">
             <ShoppingCart />
           </Route>
           <Route path="/products/:productId">
-            <ProductDetail />
+            <ProductDetail products={products} />
           </Route>
           <Route path="/checkout">
             <Checkout />
           </Route>
           <Route path="/">
-            <ProductList />
+            <ProductList products={products} />
           </Route>
         </Switch>
+
+        <Footer />
       </div>
     </Router>
   );
